@@ -1,0 +1,6 @@
+{{ .command }}
+{{ if gt .version "0.14" }}
+{{ template "chdir" }}
+{{ end }}
+workspace select
+{{ .workspaceName }}

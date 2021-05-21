@@ -1,0 +1,17 @@
+{{ .command }}
+{{ if gt .version "0.14" }}
+{{ template "chdir" }}
+{{ end }}
+apply
+{{ template "backup" }}
+{{ template "autoApprove" }}
+{{ template "lock" }}
+{{ template "lockTimeout" }}
+{{ template "noColor" }}
+{{ template "parallelism" }}
+{{ template "refresh" }}
+{{ template "state" }}
+{{ template "stateOut" }}
+{{ template "target" }}
+{{ template "vars" }}
+{{ template "varFiles" }}

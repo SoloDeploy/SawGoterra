@@ -1,0 +1,19 @@
+{{ .command }}
+{{ if gt .version "0.14" }}
+{{ template "chdir" }}
+{{ end }}
+init
+{{ template "backend" }}
+{{ template "backendConfig" }}
+{{ template "forceCopy" }}
+{{ template "fromModule" }}
+{{ template "get" }}
+{{ template "getPlugins" }}
+{{ template "input" }}
+{{ template "lock" }}
+{{ template "lockTimeout" }}
+{{ template "noColor" }}
+{{ template "pluginDir" }}
+{{ template "reconfigure" }}
+{{ template "upgrade" }}
+{{ template "verifyPlugins" }}

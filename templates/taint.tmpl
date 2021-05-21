@@ -1,0 +1,12 @@
+{{ .command }}
+{{ if gt .version "0.14" }}
+{{ template "chdir" }}
+{{ end }}
+taint
+{{ template "allowMissing" }}
+{{ template "backup" }}
+{{ template "lock" }}
+{{ template "lockTimeout" }}
+{{ template "state" }}
+{{ template "stateOut" }}
+{{ .resource }}
