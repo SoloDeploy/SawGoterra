@@ -1,5 +1,5 @@
-{{ .command }}
-{{ if gt .version "0.14" }}
+{{ .Cli.Path }}
+{{ if gt .Cli.Version "0.14" }}
 {{ template "chdir" }}
 {{ end }}
 graph
@@ -13,4 +13,6 @@ graph
 {{ template "noColor" }}
 {{ end }}
 {{ template "type" }}
+{{ if lt .Cli.Version "0.14" }}
 {{ .dir }}
+{{ end }}

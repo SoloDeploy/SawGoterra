@@ -1,8 +1,8 @@
-{{ .command }}
-{{ if gt .version "0.14" }}
+{{ .Cli.Path }}
+{{ if gt .Cli.Version "0.14" }}
 {{ template "chdir" }}
 {{ end }}
 get
 {{ template "update" }}
 {{ template "noColor" }}
-{{ .dir }}
+{{ .Cli.WorkingDir }}

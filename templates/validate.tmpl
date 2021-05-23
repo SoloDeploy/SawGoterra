@@ -1,14 +1,14 @@
-{{ .command }}
-{{ if gt .version "0.14" }}
-{{ template "chdir" }}
+{{ .Cli.Path }}
+{{ if gt .Cli.Version "0.14" }}
+{{ template "chdir" .Cli }}
 {{ end }}
 validate
 {{ if lt .version "0.12" }}
-{{ template "checkVariables" }}
-{{ template "vars" }}
-{{ template "varsFiles" }}
-{{ template "moduleDepth" }}
+{{ template "checkVariables" .Params }}
+{{ template "vars" .Params }}
+{{ template "varsFiles" .Params }}
+{{ template "moduleDepth" .Params }}
 {{ else }}
-{{ tempalte "json" }}
+{{ template "json" .Params }}
 {{ end }}
-{{ template "noColor" }}
+{{ template "noColor" .Params }}

@@ -1,11 +1,11 @@
-{{ .command }}
-{{ if gt .version "0.14" }}
-{{ template "chdir" }}
+{{ .Cli.Path }}
+{{ if gt .Cli.Version "0.14" }}
+{{ template "chdir" .Cli }}
 {{ end }}
 output
-{{ template "state" }}
-{{ template "noColor" }}
-{{ if lt .version "0.12" }}
-{{ template "module" }}
+{{ template "state" .Params }}
+{{ template "noColor" .Params }}
+{{ if lt .version "0.12" .Params }}
+{{ template "module" .Params }}
 {{ end }}
-{{ template "json" }}
+{{ template "json" .Params }}

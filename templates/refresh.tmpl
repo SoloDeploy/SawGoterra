@@ -1,16 +1,18 @@
-{{ .command }}
-{{ if gt .version "0.14" }}
-{{ template "chdir" }}
+{{ .Cli.Path }}
+{{ if gt .Cli.Version "0.14" }}
+{{ template "chdir" .Cli }}
 {{ end }}
 refresh
-{{ template "backup" }}
-{{ template "input" }}
-{{ template "lock" }}
-{{ template "lockTimeout" }}
-{{ template "noColor" }}
-{{ template "state" }}
-{{ template "stateOut" }}
-{{ template "target" }}
-{{ template "vars" }}
-{{ template "varsFiles" }}
+{{ template "backup" .Params }}
+{{ template "input" .Params }}
+{{ template "lock" .Params }}
+{{ template "lockTimeout" .Params }}
+{{ template "noColor" .Params }}
+{{ template "state" .Params }}
+{{ template "stateOut" .Params }}
+{{ template "target" .Params }}
+{{ template "vars" .Params }}
+{{ template "varsFiles" .Params }}
+{{ if lt .Cli.Version "0.14" }}
 {{ .dir }}
+{{ end }}

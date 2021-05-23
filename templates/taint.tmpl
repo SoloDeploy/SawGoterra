@@ -1,12 +1,12 @@
-{{ .command }}
-{{ if gt .version "0.14" }}
-{{ template "chdir" }}
+{{ .Cli.Path }}
+{{ if gt .Cli.Version "0.14" }}
+{{ template "chdir" .Cli }}
 {{ end }}
 taint
-{{ template "allowMissing" }}
-{{ template "backup" }}
-{{ template "lock" }}
-{{ template "lockTimeout" }}
-{{ template "state" }}
-{{ template "stateOut" }}
-{{ .resource }}
+{{ template "allowMissing" .Params }}
+{{ template "backup" .Params }}
+{{ template "lock" .Params }}
+{{ template "lockTimeout" .Params }}
+{{ template "state" .Params }}
+{{ template "stateOut" .Params }}
+{{ .Resource }}

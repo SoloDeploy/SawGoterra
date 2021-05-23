@@ -1,19 +1,16 @@
-{{ .command }}
-{{ if gt .version "0.14" }}
-{{ template "chdir" }}
+{{ .Cli.Path }}
+{{ if gt .Cli.Version "0.14" }}
+{{- template "chdir" .Cli }}
 {{ end }}
 init
-{{ template "backend" }}
-{{ template "backendConfig" }}
-{{ template "forceCopy" }}
-{{ template "fromModule" }}
-{{ template "get" }}
-{{ template "getPlugins" }}
-{{ template "input" }}
-{{ template "lock" }}
-{{ template "lockTimeout" }}
-{{ template "noColor" }}
-{{ template "pluginDir" }}
-{{ template "reconfigure" }}
-{{ template "upgrade" }}
-{{ template "verifyPlugins" }}
+{{- template "backend" .Params }}
+{{- template "backendConfig" .Params }}
+{{- template "forceCopy" .Params }}
+{{- template "fromModule" .Params }}
+{{- template "get" .Params }}
+{{- template "input" .Params }}
+{{- template "noColor" .Params }}
+{{- template "pluginDir" .Params }}
+{{- template "reconfigure" .Params }}
+{{- template "upgrade" .Params }}
+{{- template "lockfile" .Params }}

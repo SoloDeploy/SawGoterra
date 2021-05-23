@@ -1,6 +1,6 @@
-{{ .command }}
-{{ if gt .version "0.14" }}
-{{ template "chdir" }}
+{{ .Cli.Path }}
+{{ if gt .Cli.Version "0.14" }}
+{{ template "chdir" .Cli }}
 {{ end }}
 providers
 {{ .dir }}

@@ -1,22 +1,24 @@
-{{ .command }}
-{{ if gt .version "0.14" }}
-{{ template "chdir" }}
+{{ .Cli.Path }}
+{{ if gt .Cli.Version "0.14" }}
+{{ template "chdir" .Cli }}
 {{ end }}
 plan
-{{ template "destroy" }}
-{{ template "detailedExitcode" }}
-{{ template "input" }}
-{{ template "lock" }}
-{{ template "lockTimeout" }}
+{{ template "destroy" .Params }}
+{{ template "detailedExitcode" .Params }}
+{{ template "input" .Params }}
+{{ template "lock" .Params }}
+{{ template "lockTimeout" .Params }}
 {{ if lt .version "0.12" }}
-{{ template "moduleDepth" }}
+{{ template "moduleDepth" .Params }}
 {{ end }}
-{{ template "noColor" }}
-{{ template "out" }}
-{{ template "parallelism" }}
-{{ template "refresh" }}
-{{ template "state" }}
-{{ template "target" }}
-{{ template "vars" }}
-{{ template "varsFiles" }}
-{{ .plan }}
+{{ template "noColor"  .Params }}
+{{ template "out"  .Params }}
+{{ template "parallelism"  .Params }}
+{{ template "refresh"  .Params }}
+{{ template "state"  .Params }}
+{{ template "target"  .Params }}
+{{ template "var"  .Params }}
+{{ template "varsFile"  .Params }}
+{{ if lt .version "0.14" }}
+{{ .Plan }}
+{{ end }}

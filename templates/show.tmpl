@@ -1,12 +1,12 @@
-{{ .command }}
-{{ if gt .version "0.14" }}
-{{ template "chdir" }}
+{{ .Cli.Path }}
+{{ if gt .Cli.Version "0.14" }}
+{{ template "chdir" .Cli }}
 {{ end }}
 show
 {{ if lt .version "0.12" }}
-{{ template "moduleDepth" }}
+{{ template "moduleDepth" .Params }}
 {{ else }}
-{{ template "json" }}
+{{ template "json" .Params }}
 {{ end }}
-{{ template "noColor" }}
-{{ .dir }}
+{{ template "noColor" .Params }}
+{{ .Cli.WorkingDir }}
