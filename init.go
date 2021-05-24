@@ -1,13 +1,5 @@
 package sawgorerra
 
-import (
-	"bytes"
-	"fmt"
-	"log"
-	"regexp"
-	"text/template"
-)
-
 type TerraformInitParams struct {
 	Backend       bool
 	BackendConfig map[string]string
@@ -34,35 +26,11 @@ func NewTerraformInitParams() *TerraformInitParams {
 		PluginDir:     nil,
 		Reconfigure:   false,
 		Upgrade:       false,
-		Lockfile:      "readonly",
+		Lockfile:      "",
 	}
 }
 
 func (t *TerraformCli) Init(p *TerraformInitParams) error {
-	fmt.Println(t)
-	tpl, err := template.New("init.tmpl").ParseFS(templates, "partials/*.tmpl", "templates/init.tmpl")
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	var cmd bytes.Buffer
-	type Data struct {
-		Cli    *TerraformCli
-		Params *TerraformInitParams
-	}
-	data := &Data{t, p}
-	err = tpl.Execute(&cmd, data)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	space := regexp.MustCompile(`\s+`)
-	s := space.ReplaceAllString(cmd.String(), " ")
-
-	fmt.Println(s)
-	fmt.Println("done")
-
-	return nil
+	err := terraformAction("init", t, p)
+	return err
 }

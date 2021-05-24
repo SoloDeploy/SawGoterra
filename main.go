@@ -2,10 +2,11 @@ package sawgorerra
 
 import (
 	"embed"
-	"fmt"
 	"os/exec"
 	"strings"
 )
+
+var execCommand = exec.Command
 
 //go:embed partials/*.tmpl templates/*.tmpl
 var templates embed.FS
@@ -21,7 +22,6 @@ func NewTerraformCli() (*TerraformCli, error) {
 }
 
 func NewTerraformCliWithPath(binPath string) (*TerraformCli, error) {
-	fmt.Println(1)
 	cli := &TerraformCli{
 		Path: binPath,
 	}
@@ -35,8 +35,7 @@ func (t *TerraformCli) WithWorkingDirectory(workingDir string) *TerraformCli {
 }
 
 func (t *TerraformCli) fetchVersion() (*TerraformCli, error) {
-	fmt.Println(2)
-	out, err := exec.Command("terraform", "--version").Output()
+	out, err := execCommand(t.Path, "--version").Output()
 
 	if err != nil {
 		return nil, err
