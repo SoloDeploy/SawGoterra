@@ -46,8 +46,8 @@ func TestNewTerraformCliWithPath(t *testing.T) {
 	}
 
 	fmt.Println(cli)
-	if cli.Version != "0.11.0" {
-		t.Errorf("Version is incorrect")
+	if cli.VersionNumber != "0.11.0" {
+		t.Errorf("VersionNumber is incorrect")
 	}
 }
 

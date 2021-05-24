@@ -3,13 +3,13 @@ package sawgorerra
 import (
 	"bytes"
 	"fmt"
-	"html/template"
 	"log"
 	"regexp"
 	"strings"
+	"text/template"
 )
 
-func terraformAction(a string, t *TerraformCli, p interface{}) error {
+func terraformAction(a string, t *TerraformCli, p *TerraformParams) error {
 	tpl, err := template.New(a+".tmpl").ParseFS(templates, "partials/*.tmpl", "templates/"+a+".tmpl")
 
 	if err != nil {
@@ -19,7 +19,7 @@ func terraformAction(a string, t *TerraformCli, p interface{}) error {
 	var cmd bytes.Buffer
 	type Data struct {
 		Cli    *TerraformCli
-		Params interface{}
+		Params *TerraformParams
 	}
 	data := &Data{t, p}
 	err = tpl.Execute(&cmd, data)
