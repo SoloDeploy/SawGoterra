@@ -17,7 +17,7 @@ plan
 {{ template "state"  .Params }}
 {{ template "target"  .Params }}
 {{ template "var"  .Params }}
-{{ template "varsFile"  .Params }}
+{{ template "varFile"  .Params }}
 {{ if lt .Cli.VersionNumber "0.14" }}
 {{ .Plan }}
 {{ end }}
