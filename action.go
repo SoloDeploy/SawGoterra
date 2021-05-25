@@ -35,7 +35,7 @@ func terraformAction(a string, t *TerraformCli, p *TerraformParams) error {
 
 	fmt.Println(t.Path, strings.Split(cmdStr, " "))
 	tfCmd := execCommand(t.Path, strings.Split(cmdStr, " ")...)
-	out, err := tfCmd.Output()
+	out, err := tfCmd.CombinedOutput()
 	fmt.Println(string(out))
 	fmt.Println(err)
 
