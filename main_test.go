@@ -29,6 +29,8 @@ func TestHelperProcess(t *testing.T) {
 }
 
 func TestNewTerraformCli(t *testing.T) {
+	execCommand = fakeExecCommand
+	defer func() { execCommand = exec.Command }()
 	cli, _ := NewTerraformCli()
 
 	if cli.Path != "terraform" {
