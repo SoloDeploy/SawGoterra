@@ -82,7 +82,7 @@ func (t *TerraformCli) WithWorkingDirectory(workingDir string) *TerraformCli {
 }
 
 func (t *TerraformCli) fetchVersion() (*TerraformCli, error) {
-	fmt.Println(fetchVersion)
+	fmt.Println("fetchVersion")
 	out, err := execCommand(t.Path, "--version").Output()
 	fmt.Println(err)
 	fmt.Println(string(out))
