@@ -54,6 +54,8 @@ func TestNewTerraformCliWithPath(t *testing.T) {
 }
 
 func TestWithWorkingDirectory(t *testing.T) {
+	execCommand = fakeExecCommand
+	defer func() { execCommand = exec.Command }()
 	cli, _ := NewTerraformCli()
 
 	cli = cli.WithWorkingDirectory("src")
