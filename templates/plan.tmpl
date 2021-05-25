@@ -7,7 +7,7 @@ plan
 {{ template "input" .Params }}
 {{ template "lock" .Params }}
 {{ template "lockTimeout" .Params }}
-{{ if lt .version "0.12" }}
+{{ if lt .Cli.VersionNumber "0.12" }}
 {{ template "moduleDepth" .Params }}
 {{ end }}
 {{ template "noColor"  .Params }}
@@ -18,6 +18,6 @@ plan
 {{ template "target"  .Params }}
 {{ template "var"  .Params }}
 {{ template "varsFile"  .Params }}
-{{ if lt .version "0.14" }}
+{{ if lt .Cli.VersionNumber "0.14" }}
 {{ .Plan }}
 {{ end }}
