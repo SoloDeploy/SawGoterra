@@ -1,17 +1,17 @@
-{{ if gt .Cli.VersionNumber "0.14" }}
-{{ template "chdir" }}
+{{ if ge .Cli.VersionNumber "0.14" }}
+{{ template "chdir" .Cli }}
 {{ end }}
 graph
-{{ template "drawCycles" }}
-{{ template "write" }}
-{{ template "diff" }}
-{{ template "check" }}
-{{ if ge .Cli.VersionNumber "0.12" }}
-{{ template "moduleDepth" }}
+{{ template "drawCycles" .Params }}
+{{ template "write" .Params }}
+{{ template "diff" .Params }}
+{{ template "check" .Params }}
+{{ if ge .Cli.VersionNumber "0.12" .Params }}
+{{ template "moduleDepth" .Params }}
 {{ else }}
-{{ template "noColor" }}
+{{ template "noColor" .Params }}
 {{ end }}
-{{ template "type" }}
+{{ template "type" .Params }}
 {{ if lt .Cli.VersionNumber "0.14" }}
-{{ .dir }}
+{{ .Cli.WorkingDirectory }}
 {{ end }}
