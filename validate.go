@@ -10,3 +10,7 @@ func NewTerraformValidateParams() *TerraformParams {
 func (t *TerraformCli) Validate(p *TerraformParams) error {
 	return terraformAction("validate", t, p)
 }
+
+func (t *TerraformCli) ValidateWithDefaults() error {
+	return t.Validate(NewTerraformValidateParams())
+}
