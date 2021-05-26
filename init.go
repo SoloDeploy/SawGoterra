@@ -20,3 +20,9 @@ func (t *TerraformCli) Init(p *TerraformParams) error {
 	err := terraformAction("init", t, p)
 	return err
 }
+
+func (t *TerraformCli) InitWithBackendConfig(backendConfig map[string]string) error {
+	p := NewTerraformInitParams()
+	p.BackendConfig = backendConfig
+	return t.Init(p)
+}
