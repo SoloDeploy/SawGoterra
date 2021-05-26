@@ -1,6 +1,6 @@
 package sawgorerra
 
-func NewTerraformParams() *TerraformParams {
+func NewTerraformValidateParams() *TerraformParams {
 	return &TerraformParams{
 		Json:    true,
 		NoColor: true,
