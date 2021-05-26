@@ -7,11 +7,18 @@ Terraform wrapper for Golang
 package main
 
 import (
-	"fmt"
 	"log"
 
 	sg "github.com/SoloDeploy/sawgorerra"
 )
+
+var backendConfig = map[string]string{
+  "subscription_id": "abc"
+}
+
+var vars = map[string]string{
+  "location": "uksouth"
+}
 
 func main() {
 
@@ -22,15 +29,27 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(tf)
-
-	initP := sg.NewTerraformInitParams()
-	initP.BackendConfig = map[string]string{
-		"subscriptionId": "abc",
+	err = tf.InitWithBackendConfig(backendConfig)
+	if err != nil {
+		log.Fatal(err)
 	}
 
-	err = tf.Init(initP)
+	err = tf.ValidateWithDefaults()
+	if err != nil {
+		log.Fatal(err)
+	}
 
+	planP = sg.NewTerraformPlanParams()
+  planP.Var = vars
+  planP.Out = "terraform.tfplan"
+  err = tf.Plan(planP)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	applyP = sg.NewTerraformApplyParams()
+  applyP.Plan = "terraform.tfplan"
+  err = tf.Apply(applyP)
 	if err != nil {
 		log.Fatal(err)
 	}
