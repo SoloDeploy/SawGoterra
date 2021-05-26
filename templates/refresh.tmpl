@@ -12,6 +12,6 @@ refresh
 {{ template "target" .Params }}
 {{ template "vars" .Params }}
 {{ template "varsFiles" .Params }}
-{{ if lt .Cli.Version "0.14" }}
+{{ if lt .Cli.VersionNumber "0.14" }}
 {{ .dir }}
 {{ end }}

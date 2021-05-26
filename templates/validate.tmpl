@@ -2,7 +2,7 @@
 {{ template "chdir" .Cli }}
 {{ end }}
 validate
-{{ if lt .version "0.12" }}
+{{ if lt .Cli.VersionNumber "0.12" }}
 {{ template "checkVariables" .Params }}
 {{ template "vars" .Params }}
 {{ template "varsFiles" .Params }}

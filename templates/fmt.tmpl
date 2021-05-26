@@ -6,7 +6,7 @@ fmt
 {{ template "write" .Params }}
 {{ template "diff" .Params }}
 {{ template "check" .Params }}
-{{ if ge .version "0.12" .Params }}
+{{ if ge .Cli.VersionNumber "0.12" }}
 {{ template "noColor" .Params }}
 {{ template "recursive" .Params }}
 {{ end }}

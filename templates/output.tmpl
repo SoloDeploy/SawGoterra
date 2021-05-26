@@ -4,7 +4,7 @@
 output
 {{ template "state" .Params }}
 {{ template "noColor" .Params }}
-{{ if lt .version "0.12" .Params }}
+{{ if lt .Cli.VersionNumber "0.12" }}
 {{ template "module" .Params }}
 {{ end }}
 {{ template "json" .Params }}

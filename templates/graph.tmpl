@@ -6,12 +6,12 @@ graph
 {{ template "write" }}
 {{ template "diff" }}
 {{ template "check" }}
-{{ if ge .version "0.12" }}
+{{ if ge .Cli.VersionNumber "0.12" }}
 {{ template "moduleDepth" }}
 {{ else }}
 {{ template "noColor" }}
 {{ end }}
 {{ template "type" }}
-{{ if lt .Cli.Version "0.14" }}
+{{ if lt .Cli.VersionNumber "0.14" }}
 {{ .dir }}
 {{ end }}

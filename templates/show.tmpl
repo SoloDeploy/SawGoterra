@@ -2,7 +2,7 @@
 {{ template "chdir" .Cli }}
 {{ end }}
 show
-{{ if lt .version "0.12" }}
+{{ if lt .Cli.VersionNumber "0.12" }}
 {{ template "moduleDepth" .Params }}
 {{ else }}
 {{ template "json" .Params }}
