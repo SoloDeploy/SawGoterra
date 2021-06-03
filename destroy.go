@@ -1,4 +1,4 @@
-package sawgorerra
+package sawgoterra
 
 func NewTerraformDestroyParams() *TerraformParams {
 	return &TerraformParams{

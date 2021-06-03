@@ -1,4 +1,4 @@
-package sawgorerra
+package sawgoterra
 
 func NewTerraformApplyParams() *TerraformParams {
 	return &TerraformParams{
@@ -17,5 +17,5 @@ func NewTerraformApplyParams() *TerraformParams {
 }
 
 func (t *TerraformCli) Apply(p *TerraformParams) error {
-	return terraformAction("apply", t, p)
+	return terraformAction("plan", t, p)
 }

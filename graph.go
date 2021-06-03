@@ -1,4 +1,4 @@
-package sawgorerra
+package sawgoterra
 
 func NewTerraformGraphParams() *TerraformParams {
 	return &TerraformParams{

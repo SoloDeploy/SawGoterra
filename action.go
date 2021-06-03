@@ -1,4 +1,4 @@
-package sawgorerra
+package sawgoterra
 
 import (
 	"bytes"
@@ -17,10 +17,12 @@ func terraformAction(a string, t *TerraformCli, p *TerraformParams) error {
 	}
 
 	var cmd bytes.Buffer
+
 	type Data struct {
 		Cli    *TerraformCli
 		Params *TerraformParams
 	}
+
 	data := &Data{t, p}
 	err = tpl.Execute(&cmd, data)
 
@@ -31,14 +33,9 @@ func terraformAction(a string, t *TerraformCli, p *TerraformParams) error {
 	space := regexp.MustCompile(`\s+`)
 	s := space.ReplaceAllString(cmd.String(), " ")
 	cmdStr := strings.Trim(s, " ")
-	fmt.Println(cmdStr)
 
-	fmt.Println(t.Path, strings.Split(cmdStr, " "))
-	fmt.Println(strings.Split(cmdStr, " "))
 	tfCmd := execCommand(t.Path, strings.Split(cmdStr, " ")...)
 	out, err := tfCmd.CombinedOutput()
-	fmt.Println(string(out))
-	fmt.Println(err)
 
 	if err != nil {
 		return err

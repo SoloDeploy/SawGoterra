@@ -1,4 +1,4 @@
-package sawgorerra
+package sawgoterra
 
 import (
 	"testing"

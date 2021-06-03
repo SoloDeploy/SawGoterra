@@ -1,4 +1,4 @@
-package sawgorerra
+package sawgoterra
 
 import (
 	"fmt"
@@ -28,16 +28,6 @@ func TestHelperProcess(t *testing.T) {
 	os.Exit(0)
 }
 
-// func TestNewTerraformCli(t *testing.T) {
-// 	execCommand = fakeExecCommand
-// 	defer func() { execCommand = exec.Command }()
-// 	cli, _ := NewTerraformCli()
-
-// 	if cli.Path != "terraform" {
-// 		t.Errorf("Path is not terraform")
-// 	}
-// }
-
 func TestNewTerraformCliWithPath(t *testing.T) {
 	execCommand = fakeExecCommand
 	defer func() { execCommand = exec.Command }()
@@ -47,21 +37,7 @@ func TestNewTerraformCliWithPath(t *testing.T) {
 		t.Errorf("Path is not terraform")
 	}
 
-	fmt.Println(cli)
 	if cli.VersionNumber != "0.11.0" {
 		t.Errorf("VersionNumber is incorrect")
 	}
 }
-
-// func TestWithWorkingDirectory(t *testing.T) {
-// 	execCommand = fakeExecCommand
-// 	defer func() { execCommand = exec.Command }()
-// 	cli, _ := NewTerraformCli()
-
-// 	cli = cli.WithWorkingDirectory("src")
-
-// 	if cli.WorkingDir != "src" {
-// 		t.Errorf("WorkingDir not set")
-// 	}
-
-// }

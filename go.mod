@@ -1,1 +1,4 @@
-module sawgorerra
+module sawgoterra
+
+go 1.16
+

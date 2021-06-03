@@ -1,4 +1,4 @@
-package sawgorerra
+package sawgoterra
 
 func NewTerraformTaintParams() *TerraformParams {
 	return &TerraformParams{
