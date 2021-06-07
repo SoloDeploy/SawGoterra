@@ -1,0 +1,18 @@
+{{ if ge .Cli.VersionNumber "0.14" }}
+{{ template "chdir" .Cli }}
+{{ end }}
+destory
+{{ template "backup" .Params }}
+{{ template "autoApprove" .Params }}
+{{ template "lock" .Params }}
+{{ template "lockTimeout" .Params }}
+{{ template "input" .Params }}
+{{ template "noColor" .Params }}
+{{ template "parallelism" .Params }}
+{{ template "refresh" .Params }}
+{{ template "state" .Params }}
+{{ template "stateOut" }}
+{{ template "target" .Params }}
+{{ template "vars" .Params }}
+{{ template "varFiles" .Params }}
+{{ .Params.Plan }}

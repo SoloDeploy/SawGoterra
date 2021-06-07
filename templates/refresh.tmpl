@@ -1,0 +1,17 @@
+{{ if ge .Cli.VersionNumber "0.14" }}
+{{ template "chdir" .Cli }}
+{{ end }}
+refresh
+{{ template "backup" .Params }}
+{{ template "input" .Params }}
+{{ template "lock" .Params }}
+{{ template "lockTimeout" .Params }}
+{{ template "noColor" .Params }}
+{{ template "state" .Params }}
+{{ template "stateOut" .Params }}
+{{ template "target" .Params }}
+{{ template "vars" .Params }}
+{{ template "varsFiles" .Params }}
+{{ if lt .Cli.VersionNumber "0.14" }}
+{{ .dir }}
+{{ end }}

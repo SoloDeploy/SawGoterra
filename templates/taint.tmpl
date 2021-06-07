@@ -1,0 +1,11 @@
+{{ if ge .Cli.VersionNumber "0.14" }}
+{{ template "chdir" .Cli }}
+{{ end }}
+taint
+{{ template "allowMissing" .Params }}
+{{ template "backup" .Params }}
+{{ template "lock" .Params }}
+{{ template "lockTimeout" .Params }}
+{{ template "state" .Params }}
+{{ template "stateOut" .Params }}
+{{ .Resource }}

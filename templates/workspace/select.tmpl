@@ -1,0 +1,5 @@
+{{ if gt .Cli.VersionNumber "0.14" }}
+{{ template "chdir" .Cli }}
+{{ end }}
+workspace select
+{{ .WorkspaceName }}

@@ -1,0 +1,13 @@
+{{ if ge .Cli.VersionNumber "0.14" }}
+{{ template "chdir" .Cli }}
+{{ end }}
+fmt
+{{ template "list" .Params }}
+{{ template "write" .Params }}
+{{ template "diff" .Params }}
+{{ template "check" .Params }}
+{{ if ge .Cli.VersionNumber "0.12" }}
+{{ template "noColor" .Params }}
+{{ template "recursive" .Params }}
+{{ end }}
+{{ .Cli.WorkingDir }}

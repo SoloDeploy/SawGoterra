@@ -1,0 +1,5 @@
+{{ define "var" }}
+{{ range $k, $v := .Var }}
+-var={{- $k }}={{- $v }}
+{{ end }}
+{{ end }}

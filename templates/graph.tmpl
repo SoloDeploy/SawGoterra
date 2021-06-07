@@ -1,0 +1,17 @@
+{{ if ge .Cli.VersionNumber "0.14" }}
+{{ template "chdir" .Cli }}
+{{ end }}
+graph
+{{ template "drawCycles" .Params }}
+{{ template "write" .Params }}
+{{ template "diff" .Params }}
+{{ template "check" .Params }}
+{{ if ge .Cli.VersionNumber "0.12" .Params }}
+{{ template "moduleDepth" .Params }}
+{{ else }}
+{{ template "noColor" .Params }}
+{{ end }}
+{{ template "type" .Params }}
+{{ if lt .Cli.VersionNumber "0.14" }}
+{{ .Cli.WorkingDirectory }}
+{{ end }}

@@ -1,0 +1,5 @@
+{{ define "backendConfig" }}
+{{ range $k, $v := .BackendConfig }}
+-backend-config={{ $k }}={{ $v }}
+{{ end }}
+{{ end }}

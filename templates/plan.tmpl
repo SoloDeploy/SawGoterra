@@ -1,0 +1,23 @@
+{{ if ge .Cli.VersionNumber "0.14" }}
+{{ template "chdir" .Cli }}
+{{ end }}
+plan
+{{ template "destroy" .Params }}
+{{ template "detailedExitcode" .Params }}
+{{ template "input" .Params }}
+{{ template "lock" .Params }}
+{{ template "lockTimeout" .Params }}
+{{ if lt .Cli.VersionNumber "0.12" }}
+{{ template "moduleDepth" .Params }}
+{{ end }}
+{{ template "noColor"  .Params }}
+{{ template "out"  .Params }}
+{{ template "parallelism"  .Params }}
+{{ template "refresh"  .Params }}
+{{ template "state"  .Params }}
+{{ template "target"  .Params }}
+{{ template "var"  .Params }}
+{{ template "varFile"  .Params }}
+{{ if lt .Cli.VersionNumber "0.14" }}
+{{ .Plan }}
+{{ end }}

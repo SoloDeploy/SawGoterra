@@ -1,0 +1,15 @@
+{{ if ge .Cli.VersionNumber "0.14" }}
+{{ template "chdir" .Cli }}
+{{ end }}
+apply
+{{ template "backup" .Params }}
+{{ template "autoApprove" .Params }}
+{{ template "lock" .Params }}
+{{ template "lockTimeout" .Params }}
+{{ template "noColor" .Params }}
+{{ template "parallelism" .Params }}
+{{ template "refresh" .Params }}
+{{ template "state" .Params }}
+{{ template "stateOut" .Params }}
+{{ template "target" .Params }}
+{{ .Params.Plan }}

@@ -1,0 +1,7 @@
+{{ if ge .Cli.VersionNumber "0.14" }}
+{{ template "chdir" }}
+{{ end }}
+get
+{{ template "update" }}
+{{ template "noColor" }}
+{{ .Cli.WorkingDir }}
